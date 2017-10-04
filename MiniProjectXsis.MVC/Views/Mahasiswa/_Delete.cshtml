@@ -1,0 +1,100 @@
+﻿@model ViewModel.MahasiswaViewModel
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nama_Mahasiswa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nama_Mahasiswa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Alamat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Alamat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kode_Prodi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kode_Prodi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nama_Prodi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nama_Prodi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email_Mahasiswa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email_Mahasiswa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.No_Hp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.No_Hp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Jenis_Kelamin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Jenis_Kelamin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AGAMA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AGAMA)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+        <input type="button" value="Delete" class="btn btn-warning btn-delete-confirm" data-id="@Model.ID" />
+        <input type="button" value="Cancel" class="btn btn-default" data-dismiss="modal" />
+    </div>
+}
+</div>
+
+<script>
+    $(".btn-delete-confirm").click(function () {
+        $.ajax({
+            url: '@Url.Action("Delete", "Mahasiswa")',
+            type: 'post',
+            data: { id: $(this).attr("data-Id") },
+            success: function (result) {
+                if (result.success) {
+                    $("#modal-form").modal("hide");
+                    ShowList();
+                }
+                else {
+                    alert('Error : ' + result.message);
+                }
+            }
+        });
+    });
+</script>

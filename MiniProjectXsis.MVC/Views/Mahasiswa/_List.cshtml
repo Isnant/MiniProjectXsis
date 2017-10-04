@@ -1,0 +1,102 @@
+﻿@model IEnumerable<ViewModel.MahasiswaViewModel>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NIM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nama_Mahasiswa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Alamat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kode_Prodi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nama_Prodi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email_Mahasiswa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.No_Hp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Jenis_Kelamin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AGAMA)
+        </th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NIM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nama_Mahasiswa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Alamat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kode_Prodi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nama_Prodi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email_Mahasiswa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.No_Hp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JenisKelamin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AGAMA)
+            </td>
+            <td>
+                <input type="button" class="btn btn-primary btn-edit" value="Edit" data-id="@item.ID" />
+                <input type="button" class="btn btn-warning btn-delete" value="Delete" data-id="@item.ID" />
+            </td>
+        </tr>
+    }
+
+</table>
+
+<script>
+    $(".btn-edit").click(function () {
+        //alert('test button dengan id' + $(this).attr("data-id"));
+        $.ajax({
+            url: '@Url.Action("Edit", "Mahasiswa")',
+            type: 'get',
+            data : {id : $(this).attr("data-Id")},
+            success: function (result) {
+                //awali  . bila menggunakan class
+                $(".modal-body").html(result);
+                $("#modal-form").modal("show");
+            }
+        });
+    });
+
+    $(".btn-delete").click(function () {
+        $.ajax({
+            url: '@Url.Action("Delete", "Mahasiswa")',
+            type: 'get',
+            data: { id: $(this).attr("data-Id") },
+            success: function (result) {
+                //awali  . bila menggunakan class
+                $(".modal-body").html(result);
+                $("#modal-form").modal("show");
+            }
+        });
+    });
+
+</script>

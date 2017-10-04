@@ -1,0 +1,112 @@
+﻿@model ViewModel.MahasiswaViewModel
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>MahasiswaViewModel</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NIM, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NIM)
+                @Html.ValidationMessageFor(model => model.NIM)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nama_Mahasiswa, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nama_Mahasiswa)
+                @Html.ValidationMessageFor(model => model.Nama_Mahasiswa)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Alamat, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Alamat)
+                @Html.ValidationMessageFor(model => model.Alamat)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Kode_Prodi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Kode_Prodi, (IEnumerable<SelectListItem>)ViewBag.ProdiList, "Pilih Prodi", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Kode_Prodi, "", new { @Class = "test-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email_Mahasiswa, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email_Mahasiswa)
+                @Html.ValidationMessageFor(model => model.Email_Mahasiswa)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.No_Hp, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.No_Hp)
+                @Html.ValidationMessageFor(model => model.No_Hp)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Jenis_Kelamin, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.Jenis_Kelamin, "M") Male |
+                @Html.RadioButtonFor(model => model.Jenis_Kelamin, "F") Female
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AGAMA, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AGAMA)
+                @Html.ValidationMessageFor(model => model.AGAMA)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Create" class="btn btn-success btn-save-conf" />
+                <input type="button" value="Cancel" class="btn btn-default" data-dismiss="modal" />
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    $(".btn-save-conf").click(function () {
+        var postData = { ID: $("#ID").val(), NIM: $("#NIM").val(), Nama_Mahasiswa: $("#Nama_Mahasiswa").val(), Alamat: $("#Alamat").val(), Kode_Prodi: $("#Kode_Prodi").val(), Email_Mahasiswa: $("#Email_Mahasiswa").val(), No_Hp: $("#No_Hp").val(), Jenis_Kelamin: $("input[name=Jenis_Kelamin]:checked").val(), AGAMA: $("#AGAMA").val() };
+        alert(JSON.stringify(postData))
+
+        $.ajax({
+            url: '/Mahasiswa/Create',
+            type: 'post',
+            data: { model: postData },
+            success: function (result) {
+                if (result.success) {
+                    //bila sukses
+                    $("#modal-form").modal("hide");
+                    ShowList();
+                }
+                else if (result.succes = false) {
+                    //bila gagagl
+                    alert('Error : ' + result.message);
+                }
+                else {
+                    $(".modal-body").html(result);
+                }
+            }
+        });
+    });
+</script>

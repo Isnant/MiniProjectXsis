@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Mahasiswa";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="row">
+    <div class="col-lg-12">
+        <input type="button" id="btn-create" class="btn btn-success" value="Create" />
+        <div id="table-list">
+            List nya disini yahh
+        </div>
+    </div>
+</div>
+
+<div id="modal-form" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Mahasiswa</h4>
+            </div>
+            <div class="modal-body">
+                <p>One fine body&hellip;</p>
+            </div>
+        </div><!--/.modal-content-->
+    </div><!--/.modal-dialog-->
+</div><!--/.modal-->
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            ShowList()
+        });
+
+        function ShowList()
+        {
+            $.ajax({
+                url: '@Url.Action("List","Mahasiswa")',
+                type: 'get',
+                success: function (result) {
+                    //gunakan # bila menggunakan id
+                    $("#table-list").html(result);
+                }
+            });
+        }
+        $("#btn-create").click(function () {
+
+            $.ajax({
+                url: '@Url.Action("Create","Mahasiswa")',
+                type: 'get',
+                success: function (result) {
+                    //awali  . bila menggunakan class
+                    $(".modal-body").html(result);
+                    $("#modal-form").modal("show");
+                }
+            });
+
+        });
+    </script>
+}
+

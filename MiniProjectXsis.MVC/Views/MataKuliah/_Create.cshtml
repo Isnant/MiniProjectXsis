@@ -1,0 +1,95 @@
+﻿@model ViewModel.MataKuliahViewModel
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>MataKuliahViewModel</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Kode_Matkul, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Kode_Matkul)
+                @Html.ValidationMessageFor(model => model.Kode_Matkul)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nama_Matkul, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nama_Matkul)
+                @Html.ValidationMessageFor(model => model.Nama_Matkul)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SKS, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SKS)
+                @Html.ValidationMessageFor(model => model.SKS)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Kode_Dosen, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Kode_Dosen)
+                @Html.ValidationMessageFor(model => model.Kode_Dosen)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Semester, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Semester)
+                @Html.ValidationMessageFor(model => model.Semester)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Jumlah_Pertemuan, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Jumlah_Pertemuan)
+                @Html.ValidationMessageFor(model => model.Jumlah_Pertemuan)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Create" class="btn btn-success btn-save-conf" />
+                <input type="button" value="Cancel" class="btn btn-default" data-dismiss="modal" />
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    $(".btn-save-conf").click(function () {
+        var postData = { ID: $("#ID").val(), Kode_Matkul: $("#Kode_Matkul").val(), Nama_Matkul: $("#Nama_Matkul").val(), SKS: $("#SKS").val(), Kode_Dosen: $("#Kode_Dosen").val(), Semester: $("#Semester").val(), Jumlah_Pertemuan: $("#Jumlah_Pertemuan").val() };
+        alert(JSON.stringify(postData))
+
+        $.ajax({
+            url: '/MataKuliah/Create',
+            type: 'post',
+            data: { model: postData },
+            success: function (result) {
+                if (result.success) {
+                    //bila sukses
+                    $("#modal-form").modal("hide");
+                    ShowList();
+                }
+                else if (result.succes = false) {
+                    //bila gagagl
+                    alert('Error : ' + result.message);
+                }
+                else {
+                    $(".modal-body").html(result);
+                }
+            }
+        });
+    });
+</script>

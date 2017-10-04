@@ -1,0 +1,14 @@
+D:\BOOTCAMP\MiniProjectXsis\MiniProject.Repo\bin\Debug\MiniProject.Repo.dll.config
+D:\BOOTCAMP\MiniProjectXsis\MiniProject.Repo\bin\Debug\MiniProject.Repo.dll
+D:\BOOTCAMP\MiniProjectXsis\MiniProject.Repo\bin\Debug\MiniProject.Repo.pdb
+D:\BOOTCAMP\MiniProjectXsis\MiniProject.Repo\bin\Debug\DataModel.dll
+D:\BOOTCAMP\MiniProjectXsis\MiniProject.Repo\bin\Debug\EntityFramework.dll
+D:\BOOTCAMP\MiniProjectXsis\MiniProject.Repo\bin\Debug\EntityFramework.SqlServer.dll
+D:\BOOTCAMP\MiniProjectXsis\MiniProject.Repo\bin\Debug\ViewModel.dll
+D:\BOOTCAMP\MiniProjectXsis\MiniProject.Repo\bin\Debug\DataModel.pdb
+D:\BOOTCAMP\MiniProjectXsis\MiniProject.Repo\bin\Debug\ViewModel.pdb
+D:\BOOTCAMP\MiniProjectXsis\MiniProject.Repo\bin\Debug\EntityFramework.xml
+D:\BOOTCAMP\MiniProjectXsis\MiniProject.Repo\bin\Debug\EntityFramework.SqlServer.xml
+D:\BOOTCAMP\MiniProjectXsis\MiniProject.Repo\obj\Debug\3.MiniProject.Repo.csprojResolveAssemblyReference.cache
+D:\BOOTCAMP\MiniProjectXsis\MiniProject.Repo\obj\Debug\MiniProject.Repo.dll
+D:\BOOTCAMP\MiniProjectXsis\MiniProject.Repo\obj\Debug\MiniProject.Repo.pdb

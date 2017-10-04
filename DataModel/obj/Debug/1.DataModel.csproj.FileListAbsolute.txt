@@ -1,0 +1,10 @@
+D:\BOOTCAMP\MiniProjectXsis\DataModel\bin\Debug\DataModel.dll.config
+D:\BOOTCAMP\MiniProjectXsis\DataModel\bin\Debug\DataModel.dll
+D:\BOOTCAMP\MiniProjectXsis\DataModel\bin\Debug\DataModel.pdb
+D:\BOOTCAMP\MiniProjectXsis\DataModel\bin\Debug\EntityFramework.dll
+D:\BOOTCAMP\MiniProjectXsis\DataModel\bin\Debug\EntityFramework.SqlServer.dll
+D:\BOOTCAMP\MiniProjectXsis\DataModel\bin\Debug\EntityFramework.xml
+D:\BOOTCAMP\MiniProjectXsis\DataModel\bin\Debug\EntityFramework.SqlServer.xml
+D:\BOOTCAMP\MiniProjectXsis\DataModel\obj\Debug\1.DataModel.csprojResolveAssemblyReference.cache
+D:\BOOTCAMP\MiniProjectXsis\DataModel\obj\Debug\DataModel.dll
+D:\BOOTCAMP\MiniProjectXsis\DataModel\obj\Debug\DataModel.pdb
